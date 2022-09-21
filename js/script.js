@@ -80,7 +80,7 @@ function loop() {
   requestAnimationFrame(loop);
 }
 loop();
-mobileLayout();
+// mobileLayout();
 document.addEventListener("keydown", jump);
 document.addEventListener("touchstart", jump);
 restartBtn.addEventListener('click', ()=> location.reload())
