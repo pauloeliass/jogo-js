@@ -11,6 +11,30 @@ const jump = () => {
   }, jumpTime);
 };
 
+function checkDevice() { 
+  if( navigator.userAgent.match(/Android/i)
+  || navigator.userAgent.match(/webOS/i)
+  || navigator.userAgent.match(/iPhone/i)
+  || navigator.userAgent.match(/iPad/i)
+  || navigator.userAgent.match(/iPod/i)
+  || navigator.userAgent.match(/BlackBerry/i)
+  || navigator.userAgent.match(/Windows Phone/i)
+  ){
+     return true;
+   }
+  else {
+     return false; 
+   }
+ }
+
+function mobileLayout(checkDevice) {
+ if (checkDevice == true) {
+   gameBoard.style.minWidth = "90%";
+   gameBoard.style.height = "80%";
+   clouds.style.width = "20rem";
+ }
+}
+
 function marioIsJumpingUpPipe(pipePosition, marioPosition) {
   return pipePosition <= 120 && pipePosition > 0 && marioPosition >= 80;
 }
@@ -56,5 +80,7 @@ function loop() {
   requestAnimationFrame(loop);
 }
 loop();
+mobileLayout();
 document.addEventListener("keydown", jump);
+document.addEventListener("touchstart", jump);
 restartBtn.addEventListener('click', ()=> location.reload())
